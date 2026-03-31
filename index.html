@@ -603,7 +603,7 @@ ______________________________________________。
 
         <div>
           <div class="label" style="margin:0 0 8px; font-size:16px;">寵物年齡</div>
-          <input id="petAge" class="input" placeholder="可自動帶出，也可自行填寫">
+          <input id="petAge" class="input" placeholder="生日自動代入，若忘記生日請輸入年齡">
         </div>
       </div>
 
@@ -922,15 +922,22 @@ ______________________________________________。
   }
 
   if(petBirthday){
-    petBirthday.addEventListener("input", (e) => {
-      const start = e.target.selectionStart || 0;
-      const before = e.target.value;
-      e.target.value = formatYMD(e.target.value);
-      if(before.length < e.target.value.length) {
-        e.target.setSelectionRange(start+1, start+1);
-      }
-      updatePetAgeByBirthday();
-    });
+    petBirthday.addEventListener("input", () => {
+  const val = petBirthday.value.trim();
+  if(!isValidDateString(val)) return;
+  const birth = new Date(val);
+  const today = new Date();
+
+  let age = today.getFullYear() - birth.getFullYear();
+
+  const m = today.getMonth() - birth.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) {
+    age--;
+  }
+  if(!petAge.value){
+    petAge.value = age;
+  }
+});
 
     petBirthday.addEventListener("blur", updatePetAgeByBirthday);
   }
