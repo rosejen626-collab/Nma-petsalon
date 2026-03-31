@@ -13,15 +13,13 @@
   --card:#FFFFFF;
   --border:#F3C6CF;
   --text:#4A2E2E;
-  --muted:#A88484;
-  --stone:#FFEAF4;
-  --dusty:#F7B7C3;
-  --latte:#E8899C; 
-  --danger:#D96B6B;
-  --radius:22px;
-  --radius-sm:16px;
-  --shadow:0 10px 28px rgba(80, 50, 60, .08);
-  --shadow-sm:0 6px 16px rgba(80, 50, 60, .06);
+  --muted:#B98B95;
+  --stone:#FFF2F7;
+  --dusty:#FAD1DC;
+  --latte:#E8899C;
+  --danger:#FF6B8A;
+  --shadow:0 12px 30px rgba(232,137,156,.12);
+  --shadow-sm:0 6px 16px rgba(232,137,156,.08);
 }
   *{box-sizing:border-box}
   html,body{ overscroll-behavior:none; }
@@ -40,26 +38,25 @@
     margin:0 auto;
     padding:10px 14px 18px;
   }
-    .topLogo{
+.topLogo{
   text-align:center;
-  margin:10px 0 18px;
+  margin:26px 0 24px;
 }
 
 .topLogo img{
-  width:120px; 
-  max-width:70%;
+  width:160px;
+  max-width:80%;
+  display:block;
+  margin:0 auto;
 }
 
-  .card{
-    background:var(--card);
-    border-radius:var(--radius);
-    padding:18px 16px;
-    margin:14px 0;
-    border:1px solid rgba(230,201,177,.75);
-    box-shadow:
-      0 18px 45px rgba(36, 26, 22, .08),
-      0  2px 10px rgba(36, 26, 22, .04);
-  }
+.card{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:18px 16px;
+  margin:14px 0;
+  border:1px solid var(--border);
+  box-shadow:var(--shadow); 
 
   .logoBox{ text-align:center; margin:10px 0 8px; }
   .logoBox img{ width:66px; opacity:.9; }
@@ -121,23 +118,21 @@
   }
 
   .input::placeholder{ color:rgba(47,32,27,.45); }
-  .input:focus{
-    border-color:var(--latte);
-    box-shadow:0 0 0 4px rgba(195,90,46,.18);
-  }
-
-  .input[readonly]{
-    background:#F7F1EA;
-    color:#5F5148;
-  }
-
-    .input-lock{
-  background:#E9E1DB;
-  color:#6B5B52;
-  border:1.4px solid #D1C3B8;
-  cursor:not-allowed;
+ .input:focus{
+  border-color:var(--latte);
+  box-shadow:0 0 0 4px rgba(232,137,156,.18);
 }
 
+.input[readonly]{
+  background:#FFF1F6;
+  color:#8C6F75;
+}
+
+.input-lock{
+  background:#FFEAF2;
+  color:#9A7A80;
+  border:1.4px solid #F3C6CF;
+}
   .grid2{
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -155,7 +150,7 @@
     text-align:left;
     color:var(--text);
     padding-bottom:8px;
-    border-bottom:1px solid rgba(230,201,177,.6);
+    border-bottom:1px solid var(--border);
   }
 
   .contractBox{
@@ -292,8 +287,15 @@
     transition:.15s ease;
   }
   .btn:active{ transform:scale(.98); }
-  .btnClear{ background:#EFE0D3; color:#2F201B; }
-  .btnSubmit{ background:#C35A2E; color:#fff; }
+.btnClear{
+  background:#FFDDE8;
+  color:#A85C6A;
+}
+
+.btnSubmit{
+  background:#FF8DA1;
+  color:#fff;
+}
 
   .msg{
     margin-top:10px;
