@@ -590,23 +590,23 @@ ______________________________________________。
         <label class="choice"><input type="radio" name="petSex" value="女生"> 女生</label>
       </div>
 
-      <div class="grid2" style="margin-top:10px;">
-        <div>
-          <div class="label" style="margin:0 0 8px; font-size:16px;">寵物生日</div>
-          <input id="petBirthday"
-                 class="input"
-                 type="text"
-                 name="petBirthday"
-                 placeholder="YYYY/MM/DD（選填）"
-                 inputmode="numeric"
-                 pattern="\d{4}/\d{1,2}/\d{1,2}">
-        </div>
+<div class="grid2" style="margin-top:10px;">
+  <div>
+    <div class="label" style="margin:0 0 8px; font-size:16px;">寵物生日</div>
+    <input id="petBirthday"
+           class="input"
+           type="text"
+           name="petBirthday"
+           placeholder="YYYY/MM/DD（選填）"
+           inputmode="numeric"
+           pattern="\d{4}/\d{1,2}/\d{1,2}">
+  </div>
 
-        <div>
-          <div class="label" style="margin:0 0 8px; font-size:16px;">寵物年齡</div>
-          <input id="petAge" class="input" placeholder="可自動帶出，也可自行填寫">
-        </div>
-      </div>
+  <div>
+    <div class="label" style="margin:0 0 8px; font-size:16px;">寵物年齡</div>
+    <input id="petAge" class="input" placeholder="生日自動代入，若忘記生日請輸入年齡">
+  </div>
+</div>
 
       <div class="label">絕育</div>
       <div class="choiceRow" id="neuteredRow">
@@ -890,53 +890,64 @@ ______________________________________________。
   if(signDate) signDate.value = todayZh();
 
   function formatYMD(v){
-    const digits = String(v || "").replace(/\D/g,"").slice(0,8);
-    const y = digits.slice(0,4);
-    const m = digits.slice(4,6);
-    const d = digits.slice(6,8);
-    let out = y;
-    if(m) out += "/" + m;
-    if(d) out += "/" + d;
-    return out;
+  const digits = String(v || "").replace(/\D/g,"").slice(0,8);
+  const y = digits.slice(0,4);
+  const m = digits.slice(4,6);
+  const d = digits.slice(6,8);
+  let out = y;
+  if(m) out += "/" + m;
+  if(d) out += "/" + d;
+  return out;
+}
+
+function calcPetAgeText(birthdayStr){
+  const birth = parseDateString(birthdayStr);
+  if(!birth) return "";
+
+  const today = new Date();
+  let age = today.getFullYear() - birth.getFullYear();
+  const thisYearBirthday = new Date(today.getFullYear(), birth.getMonth(), birth.getDate());
+
+  if(today < thisYearBirthday){
+    age--;
   }
 
-  function calcPetAgeText(birthdayStr){
-    const birth = parseDateString(birthdayStr);
-    if(!birth) return "";
+  if(age < 0) return "";
+  return `${age}歲`;
+}
 
-    const today = new Date();
-    let age = today.getFullYear() - birth.getFullYear();
-    const thisYearBirthday = new Date(today.getFullYear(), birth.getMonth(), birth.getDate());
+function updatePetAgeByBirthday(){
+  if(!petBirthday || !petAge) return;
+  const value = (petBirthday.value || "").trim();
 
-    if(today < thisYearBirthday){
-      age--;
+  // 生日空白：不要動年齡，讓使用者可自行填寫
+  if(!value) return;
+
+  // 生日格式錯誤：不要動年齡
+  if(!isValidDateString(value)) return;
+
+  // 只有年齡目前為空，才自動帶入
+  if(!(petAge.value || "").trim()){
+    petAge.value = calcPetAgeText(value);
+  }
+}
+
+if(petBirthday){
+  petBirthday.addEventListener("input", (e) => {
+    const start = e.target.selectionStart || 0;
+    const before = e.target.value;
+    e.target.value = formatYMD(e.target.value);
+
+    if(before.length < e.target.value.length) {
+      e.target.setSelectionRange(start + 1, start + 1);
     }
 
-    if(age < 0) return "";
-    return `${age}歲`;
-  }
+    updatePetAgeByBirthday();
+  });
 
-  function updatePetAgeByBirthday(){
-    if(!petBirthday || !petAge) return;
-    const value = (petBirthday.value || "").trim();
-    petAge.value = isValidDateString(value) ? calcPetAgeText(value) : "";
-  }
-
-  if(petBirthday){
-    petBirthday.addEventListener("input", (e) => {
-      const start = e.target.selectionStart || 0;
-      const before = e.target.value;
-      e.target.value = formatYMD(e.target.value);
-      if(before.length < e.target.value.length) {
-        e.target.setSelectionRange(start+1, start+1);
-      }
-      if(!(petAge.value || "").trim()){
-      updatePetAgeByBirthday();
-    }
-    });
-
-    petBirthday.addEventListener("blur", updatePetAgeByBirthday);
-  }
+if(!(petAge.value || "").trim()){
+  updatePetAgeByBirthday();
+}
 
   function getRadio(name){
     return document.querySelector(`input[name="${name}"]:checked`)?.value || "";
@@ -1204,12 +1215,12 @@ if(data.petBirthday && !isValidDateString(data.petBirthday)){
       return;
     }
 
-    if(data.ownerEmail && !isValidEmail(data.ownerEmail)){
-      setError("Email 格式不正確，請重新確認");
-      ownerEmail.focus();
-      resetSubmit();
-      return;
-    }
+if(data.ownerEmail && !isValidEmail(data.ownerEmail)){
+  setError("Email 格式不正確，請重新確認");
+  ownerEmail.focus();
+  resetSubmit();
+  return;
+}
 
     if(!hasStroke){
       setError("請先完成簽名");
