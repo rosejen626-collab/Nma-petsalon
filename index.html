@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>寵物美容服務定型化契約</title>
 
-  <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;700;800&display=swap');
+ <style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;700;800&display=swap');
 
 :root{
   --bg:#FFE0F0;
@@ -18,13 +18,16 @@
   --dusty:#FAD1DC;
   --latte:#E8899C;
   --danger:#FF6B8A;
+  --radius:18px;
+  --radius-sm:18px;
   --shadow:0 12px 30px rgba(232,137,156,.12);
   --shadow-sm:0 6px 16px rgba(232,137,156,.08);
 }
-  *{box-sizing:border-box}
-  html,body{ overscroll-behavior:none; }
 
-  body{
+*{ box-sizing:border-box; }
+html,body{ overscroll-behavior:none; }
+
+body{
   margin:0;
   background:#FFE0F0;
   color:var(--text);
@@ -33,11 +36,12 @@
   letter-spacing:.2px;
 }
 
-  .wrap{
-    max-width:680px;
-    margin:0 auto;
-    padding:10px 14px 18px;
-  }
+.wrap{
+  max-width:680px;
+  margin:0 auto;
+  padding:10px 14px 18px;
+}
+
 .topLogo{
   text-align:center;
   margin:26px 0 24px;
@@ -56,69 +60,81 @@
   padding:18px 16px;
   margin:14px 0;
   border:1px solid var(--border);
-  box-shadow:var(--shadow); 
+  box-shadow:var(--shadow);
+}
 
-  .logoBox{ text-align:center; margin:10px 0 8px; }
-  .logoBox img{ width:66px; opacity:.9; }
+.logoBox{
+  text-align:center;
+  margin:10px 0 8px;
+}
 
-  .title{
-    font-size:26px;
-    font-weight:800;
-    margin:2px 0 10px;
-    letter-spacing:.5px;
-    text-align:center;
-  }
+.logoBox img{
+  width:66px;
+  opacity:.9;
+}
 
-  .infoBox{
-    border:1.6px solid var(--border);
-    border-radius:var(--radius-sm);
-    padding:12px 12px;
-    background:#FFF6FA;
-    box-shadow:var(--shadow-sm);
-  }
-  .meta{
-    color:rgba(47,32,27,.85);
-    font-weight:600;
-    line-height:1.7;
-    text-align:left;
-  }
+.title{
+  font-size:26px;
+  font-weight:800;
+  margin:2px 0 10px;
+  letter-spacing:.5px;
+  text-align:center;
+}
 
-  .sectionTitle{
-    font-size:22px;
-    font-weight:900;
-    margin:4px 0 10px;
-    letter-spacing:.6px;
-    text-align:left;
-  }
+.infoBox{
+  border:1.6px solid var(--border);
+  border-radius:var(--radius-sm);
+  padding:12px 12px;
+  background:#FFF6FA;
+  box-shadow:var(--shadow-sm);
+}
 
-  .subText{
-    color:var(--muted);
-    font-weight:600;
-    margin:0 0 12px;
-    line-height:1.7;
-  }
+.meta{
+  color:rgba(47,32,27,.85);
+  font-weight:600;
+  line-height:1.7;
+  text-align:left;
+}
 
-  .label{
-    font-size:18px;
-    font-weight:800;
-    margin:16px 0 10px;
-  }
+.sectionTitle{
+  font-size:22px;
+  font-weight:900;
+  margin:4px 0 10px;
+  letter-spacing:.6px;
+  text-align:left;
+}
 
-  .input{
-    width:100%;
-    border:1.6px solid var(--border);
-    border-radius:var(--radius-sm);
-    padding:14px 14px;
-    font-size:18px;
-    font-weight:600;
-    background:#FFF7FA;
-    color:var(--text);
-    outline:none;
-    box-shadow:0 1px 0 rgba(36,26,22,.04) inset;
-  }
+.subText{
+  color:var(--muted);
+  font-weight:600;
+  margin:0 0 12px;
+  line-height:1.7;
+}
 
-  .input::placeholder{ color:rgba(47,32,27,.45); }
- .input:focus{
+.label{
+  font-size:18px;
+  font-weight:800;
+  margin:16px 0 10px;
+}
+
+.input{
+  width:100%;
+  border:1.6px solid var(--border);
+  border-radius:var(--radius-sm);
+  padding:14px 14px;
+  font-size:18px;
+  font-weight:600;
+  background:#FFF7FA;
+  color:var(--text);
+  outline:none;
+  box-shadow:0 1px 0 rgba(36,26,22,.04) inset;
+}
+
+.input::placeholder{
+  color:rgba(47,32,27,.45);
+}
+
+.input:focus{
   border-color:var(--latte);
   box-shadow:0 0 0 4px rgba(232,137,156,.18);
 }
@@ -132,161 +148,181 @@
   background:#FFEAF2;
   color:#9A7A80;
   border:1.4px solid #F3C6CF;
+  cursor:not-allowed;
 }
-  .grid2{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-  }
-  @media (max-width:560px){
-    .grid2{ grid-template-columns:1fr; }
-  }
 
-  .contractTitle{
-    font-size:22px;
-    font-weight:900;
-    margin:0 0 12px;
-    letter-spacing:.6px;
-    text-align:left;
-    color:var(--text);
-    padding-bottom:8px;
-    border-bottom:1px solid var(--border);
-  }
+.grid2{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
 
-  .contractBox{
-    border:1.6px solid var(--border);
-    border-radius:var(--radius-sm);
-    padding:14px;
-    background:#FFF6FA;
-    max-height:440px;
-    overflow-y:auto;
-    overflow-x:hidden;
-    box-shadow:var(--shadow-sm);
-    text-align:left;
-  }
+@media (max-width:560px){
+  .grid2{ grid-template-columns:1fr; }
+}
 
-  .contractBox pre{
-    margin:0;
-    white-space:pre-wrap;
-    word-break:break-word;
-    line-height:1.75;
-    font-size:15px;
-    font-weight:500;
-    color:rgba(47,32,27,.95);
-    text-align:left;
-  }
+.contractTitle{
+  font-size:22px;
+  font-weight:900;
+  margin:0 0 12px;
+  letter-spacing:.6px;
+  text-align:left;
+  color:var(--text);
+  padding-bottom:8px;
+  border-bottom:1px solid var(--border);
+}
 
-  .checkRow{
-    display:flex;
-    gap:12px;
-    align-items:flex-start;
-    margin-top:14px;
-    padding:12px;
-    border-radius:16px;
-    background:#FFF1F7;
-    border:1px solid var(--border);
-  }
-  .checkRow input{
-    width:22px; height:22px;
-    accent-color:var(--latte);
-    margin-top:2px;
-  }
-  .checkRow label{
-    font-size:17px;
-    font-weight:800;
-    color:var(--text);
-    line-height:1.5;
-  }
+.contractBox{
+  border:1.6px solid var(--border);
+  border-radius:var(--radius-sm);
+  padding:14px;
+  background:#FFF6FA;
+  max-height:440px;
+  overflow-y:auto;
+  overflow-x:hidden;
+  box-shadow:var(--shadow-sm);
+  text-align:left;
+}
 
-  .choiceRow{
-    display:flex;
-    gap:14px;
-    flex-wrap:wrap;
-    align-items:center;
-    padding:12px;
-    border:1px solid var(--border);
-    border-radius:16px;
-    background:#FFF6FA;
-    box-shadow:var(--shadow-sm);
-  }
-  .choice{
-    display:flex;
-    gap:8px;
-    align-items:center;
-    font-weight:800;
-  }
-  .choice input{
-    width:20px; height:20px;
-    accent-color:var(--latte);
-  }
+.contractBox pre{
+  margin:0;
+  white-space:pre-wrap;
+  word-break:break-word;
+  line-height:1.75;
+  font-size:15px;
+  font-weight:500;
+  color:rgba(47,32,27,.95);
+  text-align:left;
+}
 
-  .checkGrid{
-    display:grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap:12px 40px;
-    padding:14px 16px;
-    border:1px solid var(--border);
-    border-radius:16px;
-    background:#FFF6FA;
-    box-shadow:var(--shadow-sm);
-  }
+.checkRow{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  margin-top:14px;
+  padding:12px;
+  border-radius:var(--radius-sm);
+  background:#FFF1F7;
+  border:1px solid var(--border);
+}
 
-  .ck{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    font-weight:600;
-    font-size:14px;
-    line-height:1.4;
-  }
+.checkRow input{
+  width:22px;
+  height:22px;
+  accent-color:var(--latte);
+  margin-top:2px;
+}
 
-  .ck input{
-    width:18px;
-    height:18px;
-    accent-color:var(--latte);
-    flex-shrink:0;
-  }
+.checkRow label{
+  font-size:17px;
+  font-weight:800;
+  color:var(--text);
+  line-height:1.5;
+}
 
-  .fullRow{ grid-column: 1 / -1; }
-  .otherInputWrap{ display:none; margin-top:10px; }
-  .otherInputWrap .input{ width:100%; }
+.choiceRow{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  align-items:center;
+  padding:12px;
+  border:1px solid var(--border);
+  border-radius:var(--radius-sm);
+  background:#FFF6FA;
+  box-shadow:var(--shadow-sm);
+}
 
-  .vetPresetBox{
-    margin-top:10px;
-    border:1.6px solid var(--border);
-    border-radius:16px;
-    background:#FFF6FA;
-    padding:14px 14px;
-    line-height:1.8;
-    font-weight:700;
-    color:var(--text);
-    box-shadow:var(--shadow-sm);
-  }
+.choice{
+  display:flex;
+  gap:8px;
+  align-items:center;
+  font-weight:800;
+}
 
-  #sig{
-    width:100%;
-    height:320px;
-    border:1.6px solid var(--border);
-    border-radius:var(--radius-sm);
-    background:#fff;
-    touch-action:none;
-    box-shadow:var(--shadow-sm);
-  }
+.choice input{
+  width:20px;
+  height:20px;
+  accent-color:var(--latte);
+}
 
-  .btn{
-    width:100%;
-    border:none;
-    border-radius:18px;
-    padding:15px 16px;
-    font-size:18px;
-    font-weight:900;
-    cursor:pointer;
-    margin-top:12px;
-    letter-spacing:.3px;
-    box-shadow:0 10px 20px rgba(36,26,22,.10);
-    transition:.15s ease;
-  }
-  .btn:active{ transform:scale(.98); }
+.checkGrid{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:12px 40px;
+  padding:14px 16px;
+  border:1px solid var(--border);
+  border-radius:var(--radius-sm);
+  background:#FFF6FA;
+  box-shadow:var(--shadow-sm);
+}
+
+.ck{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-weight:600;
+  font-size:14px;
+  line-height:1.4;
+}
+
+.ck input{
+  width:18px;
+  height:18px;
+  accent-color:var(--latte);
+  flex-shrink:0;
+}
+
+.fullRow{ grid-column:1 / -1; }
+
+.otherInputWrap{
+  display:none;
+  margin-top:10px;
+}
+
+.otherInputWrap .input{
+  width:100%;
+}
+
+.vetPresetBox{
+  margin-top:10px;
+  border:1.6px solid var(--border);
+  border-radius:var(--radius-sm);
+  background:#FFF6FA;
+  padding:14px 14px;
+  line-height:1.8;
+  font-weight:700;
+  color:var(--text);
+  box-shadow:var(--shadow-sm);
+}
+
+#sig{
+  width:100%;
+  height:320px;
+  border:1.6px solid var(--border);
+  border-radius:var(--radius-sm);
+  background:#fff;
+  touch-action:none;
+  box-shadow:var(--shadow-sm);
+}
+
+.btn{
+  width:100%;
+  border:none;
+  border-radius:var(--radius-sm);
+  padding:15px 16px;
+  font-size:18px;
+  font-weight:900;
+  cursor:pointer;
+  margin-top:12px;
+  letter-spacing:.3px;
+  box-shadow:0 10px 20px rgba(232,137,156,.12);
+  transition:.15s ease;
+}
+
+.btn:active{
+  transform:scale(.98);
+}
+
 .btnClear{
   background:#FFDDE8;
   color:#A85C6A;
@@ -297,27 +333,40 @@
   color:#fff;
 }
 
-  .msg{
-    margin-top:10px;
-    color:var(--danger);
-    font-weight:900;
-    text-align:center;
-    line-height:1.6;
-    white-space:pre-line;
-  }
+.msg{
+  margin-top:10px;
+  color:var(--danger);
+  font-weight:900;
+  text-align:center;
+  line-height:1.6;
+  white-space:pre-line;
+}
 
-  .dangerNote{
-    margin-top:10px;
-    color:var(--muted);
-    font-weight:800;
-    font-size:14px;
-    text-align:center;
-  }
+.dangerNote{
+  margin-top:10px;
+  color:var(--muted);
+  font-weight:800;
+  font-size:14px;
+  text-align:center;
+}
 
-  .hidden{ display:none !important; }
-    
-  </style>
+.hidden{
+  display:none !important;
+}
 
+.card,
+.infoBox,
+.contractBox,
+.input,
+.choiceRow,
+.checkRow,
+.checkGrid,
+.vetPresetBox,
+#sig,
+.btn{
+  border-radius:18px !important;
+}
+</style>
   <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 </head>
 
