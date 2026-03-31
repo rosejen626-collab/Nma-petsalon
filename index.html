@@ -553,16 +553,16 @@ ______________________________________________。
       <div class="grid2" style="margin-top:10px;">
         <div>
           <div class="label" style="margin:0 0 8px; font-size:16px;">緊急聯絡人</div>
-          <input id="emergencyName" class="input" placeholder="請輸入緊急聯絡人姓名">
+          <input id="emergencyName" class="input" placeholder="請輸入緊急聯絡人姓名（選填）">
         </div>
         <div>
           <div class="label" style="margin:0 0 8px; font-size:16px;">緊急聯絡人電話</div>
-          <input id="emergencyPhone" class="input" inputmode="tel" placeholder="請輸入緊急聯絡人電話">
+          <input id="emergencyPhone" class="input" inputmode="tel" placeholder="請輸入緊急聯絡人電話（選填）">
         </div>
       </div>
 
       <div class="label">Email（寄送附本用）</div>
-      <input id="ownerEmail" class="input" inputmode="email" placeholder="例：abc@gmail.com">
+      <input id="ownerEmail" class="input" inputmode="email" placeholder="例：abc@gmail.com（選填）">
 
       <div class="label">通訊地址</div>
       <input id="ownerAddress" class="input" placeholder="請輸入通訊地址">
@@ -593,19 +593,17 @@ ______________________________________________。
       <div class="grid2" style="margin-top:10px;">
         <div>
           <div class="label" style="margin:0 0 8px; font-size:16px;">寵物生日</div>
-          <input id="petBirthday"
-                 class="input"
-                 type="text"
-                 name="petBirthday"
-                 placeholder="YYYY/MM/DD"
-                 inputmode="numeric"
-                 pattern="\d{4}/\d{1,2}/\d{1,2}"
-                 required>
-        </div>
+<input id="petBirthday"
+       class="input"
+       type="text"
+       name="petBirthday"
+       placeholder="YYYY/MM/DD（選填）"
+       inputmode="numeric"
+       pattern="\d{4}/\d{1,2}/\d{1,2}">
 
         <div>
           <div class="label" style="margin:0 0 8px; font-size:16px;">寵物年齡</div>
-          <input id="petAge" class="input input-lock" placeholder="" readonly>
+          <input id="petAge" class="input" placeholder="可自動帶出，也可自行填寫">
         </div>
       </div>
 
@@ -1141,58 +1139,58 @@ refreshChip();
     const otherInjuryNote = (otherInjury && otherInjury.checked) ? (otherText?.value || "").trim() : "";
 
     const data = {
-      ownerName: requireValue(ownerName, "甲方姓名"),
-      ownerPhone: requireValue(ownerPhone, "聯絡電話"),
-      emergencyName: requireValue(emergencyName, "緊急聯絡人"),
-      emergencyPhone: requireValue(emergencyPhone, "緊急聯絡人電話"),
-      ownerEmail: requireValue(ownerEmail, "Email（寄送附本用）"),
-      ownerIdNo: requireValue(ownerIdNo, "身分證字號"),
-      ownerAddress: requireValue(ownerAddress, "通訊地址"),
+  ownerName: requireValue(ownerName, "甲方姓名"),
+  ownerPhone: requireValue(ownerPhone, "聯絡電話"),
+  emergencyName: (emergencyName.value || "").trim(),
+  emergencyPhone: (emergencyPhone.value || "").trim(),
+  ownerEmail: (ownerEmail.value || "").trim(),
+  ownerIdNo: requireValue(ownerIdNo, "身分證字號"),
+  ownerAddress: requireValue(ownerAddress, "通訊地址"),
 
-      isOwnerSelf,
-      ownerRelation: (isOwnerSelf === "否") ? requireValue(ownerRelation, "與飼主關係") : "",
+  isOwnerSelf,
+  ownerRelation: (isOwnerSelf === "否") ? requireValue(ownerRelation, "與飼主關係") : "",
 
-      petName: requireValue(petName, "寵物姓名"),
-      petBreed: requireValue(petBreed, "寵物品種"),
-      petSex,
-      petAge: requireValue(petAge, "寵物年齡"),
-      petBirthday: requireValue(petBirthday, "寵物生日"),
-      neutered,
-      petWeight: requireValue(petWeight, "體重"),
-      petTemperament: getPetTemperament(),
-      petTemperamentNote: (petTemperamentNote?.value || "").trim(),
-      signDate: requireValue(signDate, "簽署日期"),
+  petName: requireValue(petName, "寵物姓名"),
+  petBreed: requireValue(petBreed, "寵物品種"),
+  petSex,
+  petAge: requireValue(petAge, "寵物年齡"),
+  petBirthday: (petBirthday.value || "").trim(),
+  neutered,
+  petWeight: requireValue(petWeight, "體重"),
+  petTemperament: getPetTemperament(),
+  petTemperamentNote: (petTemperamentNote?.value || "").trim(),
+  signDate: requireValue(signDate, "簽署日期"),
 
-      chipHas,
-      chipNo: (chipHas === "有") ? (chipNo.value || "").trim() : "",
-      chipIdentifyInfo: (chipHas === "無") ? (chipIdentifyInfo.value || "").trim() : "",
+  chipHas,
+  chipNo: (chipHas === "有") ? (chipNo.value || "").trim() : "",
+  chipIdentifyInfo: (chipHas === "無") ? (chipIdentifyInfo.value || "").trim() : "",
 
-      foodAllergy,
-      allergyDetail: allergyDetailText,
+  foodAllergy,
+  allergyDetail: allergyDetailText,
 
-      treatAllowed,
+  treatAllowed,
 
-      medicalHistory,
-      medicalNote: medicalNoteText,
-      otherInjuryNote,
+  medicalHistory,
+  medicalNote: medicalNoteText,
+  otherInjuryNote,
 
-      vetMode,
-      vetName: (vetMode === "甲方指定") ? requireValue(vetName, "動物醫院名稱") : STORE_VET.name,
-      vetPhone: (vetMode === "甲方指定") ? requireValue(vetPhone, "動物醫院電話") : STORE_VET.phone,
-      vetAddress: (vetMode === "甲方指定") ? requireValue(vetAddress, "動物醫院地址") : STORE_VET.address
-    };
+  vetMode,
+  vetName: (vetMode === "甲方指定") ? requireValue(vetName, "動物醫院名稱") : STORE_VET.name,
+  vetPhone: (vetMode === "甲方指定") ? requireValue(vetPhone, "動物醫院電話") : STORE_VET.phone,
+  vetAddress: (vetMode === "甲方指定") ? requireValue(vetAddress, "動物醫院地址") : STORE_VET.address
+};
 
     if(Object.values(data).some(v => v === null)){
       resetSubmit();
       return;
     }
 
-    if(!isValidDateString(data.petBirthday)){
-      setError("寵物生日格式不正確，請輸入有效日期");
-      petBirthday.focus();
-      resetSubmit();
-      return;
-    }
+if(data.petBirthday && !isValidDateString(data.petBirthday)){
+  setError("寵物生日格式不正確，請輸入有效日期");
+  petBirthday.focus();
+  resetSubmit();
+  return;
+}
 
     if(!isValidWeight(data.petWeight)){
       setError("體重格式不正確，請輸入數字，例如：6.5");
@@ -1250,8 +1248,8 @@ refreshChip();
 
       const ptNoteText = data.petTemperamentNote ? data.petTemperamentNote : "（未填）";
 
-      const completeNote =
-"（簽署資料與簽名已完成。\n副本已寄送至您的Email信箱。\n\n若有多隻毛寶，請為每隻毛寶分別填寫一份表單並各自送出。）";
+const completeNote =
+"（簽署資料與簽名已完成。\n若有填寫Email，副本將寄送至您的Email信箱。\n\n若有多隻毛寶，請為每隻毛寶分別填寫一份表單並各自送出。）";
 
       const textMsg =
 `【犬貓美容契約簽署資料】
